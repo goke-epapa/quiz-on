@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NYSC ICT CDS Oyo - Inter School Quiz Competition</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <script src="js/ractive.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="question-container">
+    <div class="page-header">
+        <h1>ICT CDS Inter School Quiz Competition
+            <small id="categoryBanner"></small>
+        </h1>
+    </div>
+    <div id='container'></div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="categories" class="btn-group btn-group-lg" role="group" aria-label="...">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <button id="showAnswerBtn" class="btn btn-lg btn-success">Show Answer</button>
+            <p>Enter Question Number</p>
+            <input type="number" id="numberInput" class="form-control"/>
+        </div>
+    </div>
+</div>
+
+<script id="category" type="text/html">
+    {{#categories:category}}
+    <button type="button" data-category="{{category}}" class="btn btn-default">{{name}}</button>
+    {{/categories}}
+</script>
+
+<script id='question' type='text/html'>
+    {{#question}}
+    <div class="jumbotron">
+        <h2 data-answer="{{question.answer}}">{{question.category}}</h2>
+        <h1><span class="label label-primary">{{question.no}}</span> {{question.content}}</h1>
+    </div>
+    {{#question.options}}
+    <div class="row col-sm-6">
+        <div class="panel panel-default options">
+            <div class="panel-body">
+                <h2><span class="label label-default">{{letter}}</span> {{content}}</h2>
+            </div>
+        </div>
+    </div>
+    {{/options}}
+    {{/question}}
+</script>
+</body>
+<script src="js/questions.js"></script>
+<script src="js/main.js"></script>
+</html>
